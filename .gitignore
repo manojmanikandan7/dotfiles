@@ -1,5 +1,8 @@
 .DS_Store
 
-.idea
-
+# Ignore nvim swap files
 .swp
+
+#Ignore configs for spicetify and zed (for now)
+spicetify/
+zed/

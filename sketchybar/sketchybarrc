@@ -1,0 +1,58 @@
+# !/usr/bin/env sh
+# This is a demo config to showcase some of the most important commands.
+# It is meant to be changed and configured, as it is intentionally kept sparse.
+# For a (much) more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEM_DIR="$CONFIG_DIR/items"
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+sketchybar --bar position=top height=30 blur_radius=30 color=0x40000000
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Hack Nerd Font:Bold:16.0"
+  label.font="Hack Nerd Font:Bold:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  background.color=0x30ffffff
+  background.corner_radius=6
+  background.height=26
+  icon.padding_left=8
+  icon.padding_right=8
+  label.padding_left=10
+  label.padding_right=12
+)
+sketchybar --default "${default[@]}"
+
+
+##### Adding Left Items #####
+source $ITEM_DIR/space.sh
+source $ITEM_DIR/front_app.sh
+
+##### Adding Center Items
+
+source $ITEM_DIR/media.sh
+##### Adding Right Items #####
+
+source $ITEM_DIR/clock.sh
+source $ITEM_DIR/volume.sh
+source $ITEM_DIR/battery.sh
+source $ITEM_DIR/wifi.sh
+source $ITEM_DIR/cpu.sh
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update

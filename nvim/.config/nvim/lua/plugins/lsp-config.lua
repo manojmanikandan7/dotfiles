@@ -32,7 +32,6 @@ return {
       })
       lspconfig.ruby_lsp.setup({
         capabilities = capabilities,
-        cmd = { "/home/typecraft/.asdf/shims/ruby-lsp" }
       })
       lspconfig.lua_ls.setup({
         capabilities = capabilities

@@ -1,127 +1,164 @@
-@import "mocha.css"; 
+/* ──────────────────────────────────────────────────────────────────────────
+   Waybar CSS styling
+   ────────────────────────────────────────────────────────────────────────── */
 
-* {
-    font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 16px;
-    min-height: 0;
-    font-weight: bold;
+/* === Base Waybar Styling ================================================= */
+
+waybar * {
+  border: 1px;
+  border-radius: 1px;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font Mono";
+  font-size: 12px;
 }
 
 window#waybar {
-    background: transparent;
-    background-color: @crust;
-    color: @overlay0;
-    transition-property: background-color;
-    transition-duration: 0.1s;
-    border-bottom: 1px solid @overlay1;
+  /* background-color: rgba(59, 66, 82, 0.9); */
+  background: transparent;
+  color: #9cdef2;
 }
 
-#window {
-    margin: 8px;
-    padding-left: 8;
-    padding-right: 8;
-}
 
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
-}
 
-button:hover {
-    background: inherit;
-    color: @mauve;
-    border-top: 2px solid @mauve;
+/* === Workspaces ========================================================== */
+
+#workspaces {
+  background-color: transparent;
 }
 
 #workspaces button {
-    padding: 0 4px;
-}
-
-#workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @rosewater;
-    border-top: 2px solid @rosewater;
+  all: initial;
+  min-width: 0;
+  box-shadow: inherit;
+  padding: 4px 4px;
+  margin: 6px 3px;
+  border-radius: 2px;
+  background-color: #2e3440;
+  color: #56b6c2;
 }
 
 #workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @mauve;
-    border-top: 2px solid @mauve;
+  color: #fab387;
 }
 
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+#workspaces button:hover {
+  color: #2e3440;
+  background-color: #56b6c2;
 }
 
-#pulseaudio,
+
+/* === Default Module Container Styling ==================================== */
+
 #clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#wireplumber,
-#tray,
 #network,
-#mode,
-#scratchpad {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
+#bluetooth,
+#custom-microphone,
+#tray,
+#cpu,
+#temperature,
+#memory,
+#custom-battery,
+#custom-volume,
+#battery,
+#custom-brightness {
+  padding: 1px 6px;
+  margin: 2px 2px;
+  background-color: #292d35;
+  border: 1px solid #61afef;
+  border-radius: 1px;
 }
+
+
+/* === PulseAudio ============================================================== */
+
+/* #pulseaudio.muted {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+} */
+
+
+/* === Bluetooth (And others) =========================================================== */
+
+#bluetooth.disabled,
+#network.disabled,
+#custom-squares,
+#custom-leftchev,
+#custom-rightchev,
+#clock {
+  color: #fab387;
+}
+
+/* === Network ============================================================= */
+
+#network.disconnected {
+  background-color: #e06c75;
+  color: #1e1e2e;
+}
+
+
+/* === Clock =============================================================== */
 
 #clock {
-    color: @maroon;
-    border-bottom: 2px solid @maroon;
+  font-weight: bold;
+  font-size: 12px;
 }
 
-#clock.date {
-    color: @mauve;
-    border-bottom: 2px solid @mauve;
+
+/* === Battery ============================================================= */
+
+#custom-battery {
+  font-weight: normal;
 }
 
-#pulseaudio {
-    color: @blue;
-    border-bottom: 2px solid @blue;
+/* 🔴 Critical */
+#custom-battery .battery-critical {
+  background-color: #bf616a;
+  color: white;
+  font-weight: bold;
 }
 
-#network {
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
+/* 🟠 Warning */
+#custom-battery .battery-warning {
+  background-color: #fab387;
+  color: #2e3440;
 }
 
-#idle_inhibitor {
-    margin-right: 12px;
-    color: #7cb342;
+/* 🟢 Normal */
+#custom-battery .battery-normal {
+  color: #ffffff;
 }
 
-#idle_inhibitor.activated {
-    color: @red;
+
+
+/* === Hover Effects ======================================================= */
+/* Unified look for all interactive modules                                */
+
+#clock:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-microphone:hover,
+#tray:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-battery:hover,
+#custom-volume:hover,
+#custom-brightness:hover {
+  border: 1px ridge #56b6c2;
+  color: #56b6c2;
 }
 
-#battery {
-    color: @green;
-    border-bottom: 2px solid @green;
+
+/* === Tooltips ============================================================ */
+
+tooltip {
+  color: #56b6c2;
+  background-color: #3b4252;
+  border: 1px solid #56b6c2;
+  font-weight: bold;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
+tooltip label {
+  color: #78bec7;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
-}
-
-#custom-vpn {
-    color: @lavender;
-    border-radius: 15px;
-    padding-left: 6px;
-    padding-right: 6px;
-}

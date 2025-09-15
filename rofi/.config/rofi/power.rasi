@@ -1,0 +1,109 @@
+configuration {
+    show-icons: false;
+}
+
+* {
+    mainbox-spacing: 10px;
+    mainbox-margin: 30px;
+    message-margin: 0px 300px;
+    message-padding: 10px;
+    listview-spacing: 25px;
+    element-padding: 10px 0px;
+    prompt-font: "JetBrains Mono Nerd Font 16";
+    entry-font: "JetBrains Mono Nerd Font 10";
+    entry-margin: 0px 200px;
+    element-text-font: "JetBrains Mono Nerd Font 13";
+    background-window: rgba(59, 66, 82, 0.8);
+    background-normal: rgba(59, 66, 82, 1);
+    background-selected: rgba(250, 179, 135, 1);
+    foreground-normal: white;
+    foreground-selected: white;
+    foreground-dim: rgba(255, 255, 255, 0.6);
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 800px;
+    cursor: "default";
+    background-color: @background-window;
+    blur: 15;
+}
+
+mainbox {
+    enabled: true;
+    spacing: @mainbox-spacing;
+    margin: @mainbox-margin;
+    background-color: transparent;
+    children: [ "inputbar", "entry", "listview", "message" ];
+}
+
+inputbar {
+    enabled: true;
+    background-color: transparent;
+    children: [ "prompt" ];
+}
+
+prompt {
+    enabled: true;
+    font: @prompt-font;
+    background-color: transparent;
+    text-color: @foreground-normal;
+}
+
+message {
+    enabled: false;
+    margin: @message-margin;
+    padding: @message-padding;
+    background-color: @background-normal;
+    text-color: @foreground-normal;
+}
+
+entry {
+    font: @entry-font;
+    background-color: transparent;
+    text-color: transparent;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+listview {
+    enabled: true;
+    expand: false;
+    columns: 5;
+    lines: 1;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing: @listview-spacing;
+    background-color: transparent;
+    cursor: "default";
+}
+
+element {
+    enabled: true;
+    padding: @element-padding;
+    background-color: @background-normal;
+    text-color: @foreground-normal;
+    cursor: pointer;
+}
+
+element-text {
+    font: @element-text-font;
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+element selected.normal {
+    background-color: @background-selected;
+    text-color: @foreground-selected;
+}

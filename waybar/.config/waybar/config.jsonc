@@ -1,40 +1,241 @@
+// ──────────────────────────────────────────────────────────────────────────
+//  °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh shhheersh
+//  Waybar config
+//  vers. 1.0.0
+// ──────────────────────────────────────────────────────────────────────────
+
 {
+  "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "width": 0,
+  "height": 34,
+  "reload_style_on_change": true,
+
+  // ── Modules Layout ───────────────────────────────────────────────
+  "modules-left": [
+    "clock",
+    "network",
+    "bluetooth",
+    "custom/microphone",
+    "tray",
+    "custom/leftchev",
+    "hyprland/window",
+    "custom/rightchev"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    // "battery",
+    "group/expand",
+    "custom/battery",
+    "custom/volume",
+    "custom/brightness"
+  ],
+
+  // ── Clock ────────────────────────────────────────────────────────
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
+    "format": "[ {:%I:%M:%S %p} ]",
+    "interval": 1,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "on-click-right": "gnome-calendar",
+    "calendar": {
+      "format": {
+        "today": "<span color='#fab387'><b>{}</b></span>"
+      }
     },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "tooltip-format": "{time}"
+    "actions": {
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up",
+    }
   },
+
+  // ── Network ──────────────────────────────────────────────────────
+  // "network": {
+  //   "format": "{ifname}",
+  //   "format-wifi": "({signalStrength}%)   ",
+  //   "format-ethernet": "{ifname}   ",
+  //   "format-disconnected": "   ",
+  //   "tooltip-format": "{ifname}",
+  //   "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+  //   "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+  //   "tooltip-format-disconnected": "Disconnected",
+  //   "on-click": "nm-connection-editor",
+  //   "interval": 5,
+  //   "max-length": 50
+  // },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+    "format-wifi": "[   ]",
+    "format-ethernet": "[  ]",
+    "format-disconnected": "[  ]",
+    "format-disabled": "[ 󰌙 ]",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "Networking off",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ifname} 🖧 ",
+    "on-click": "~/.config/waybar/scripts/wifi-toggle.sh",
+    "on-click-right": "nm-connection-editor"
   },
-  "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
+  "bluetooth": {
+    "format-on": "[ 󰂯 ]",
+    "format-off": "[BT-off]",
+    "format-disabled": "[ 󰂲 ]",
+    "format-connected": "[ 󰂱 ]",
+    "format-connected-battery": "[{device_battery_percentage}% 󰂱 ]",
+    // "format-alt": "{device_alias} 󰂯 ",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh",
+    "on-click-right": "overskride"
+  },
+
+  // ── Battery (scripted + built-in) ────────────────────────────────
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "return-type": "json",
+    "interval": 10
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "charging": ["󰢜 ", "󰂆 ", "󰂇 ", "󰂈 ", "󰢝 ", "󰂉 ", "󰢞 ", "󰂊 ", "󰂋 ", "󰂅 "],
+      "default": ["󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀 ", "󰂁 ", "󰂂 ", "󰁹 "]
+    },
+    "format-full": "Charged ",
+    "interval": 5,
+    "states": {
+      "warning": 40,
+      "critical": 20
+    },
+    "tooltip": true
+  },
+
+  // ── Microphone ───────────────────────────────────────────────────
+  "custom/microphone": {
+    "exec": "~/.config/waybar/scripts/mic.sh",
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "Mic Toggle",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol -t 4"
+  },
+
+  // ── Brightness ───────────────────────────────────────────────────
+  "custom/brightness": {
+    "exec": "~/.config/waybar/scripts/brightness.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/brightness-toggle.sh",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "backlight": {
+    "format": "󰛨  {percent}%",
+    "format-icons": ["󰃞 ", "󰃟 ", "󰃠 ", "󰃝 ", "󰃜 ", "󰃛 "],
+    "class": "flicker-bar",
+    "on-click": "~/.config/waybar/scripts/brightness-slider.sh"
+  },
+
+  "hyprland/window": {
+    "separate-outputs": true,
+    "max-length": 50
+  },
+
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "active-only": false,
+    // "show-special": true,
+    // "special-visible-only": true,
+    // "hide-active":
+    // "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "default": "[◇]",
+      "empty": "[◇]",
+      "active": "[]"
+    },
+    "persistent-workspaces": {
+      "*": 1
+    },
+    // "persistent-only":
+    // "sort-by":
+    // "window-rewrite":
+    // "window-rewrite-default":
+    // "format-window-separator":
+    // "move-to-monitor":
+    // "ignore-workspaces":
+    "cursor": true
+  },
+
+  // ── Volume ───────────────────────────────────────────────────────
+  "custom/volume": {
+    "exec": "~/.config/waybar/scripts/volume.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click-right": "pavucontrol -t 3"
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+
+  // ── Spacer ───────────────────────────────────────────────────────
+  "custom/squares": {
+    "format": " 󰅴 ",
+    "tooltip": false
+  },
+
+  "custom/leftchev": {
+    "format": " 󰅁 ",
+    "tooltip": false
+  },
+
+  "custom/rightchev": {
+    "format": " 󰅂 ",
+    "tooltip": false
+  },
+
+  "custom/expand": {
+    "format": " ",
+    "tooltip": false
+  },
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-to-left": true,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/expand",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+  "cpu": {
+    "format": "[ 󰻠 {usage}% ]",
+    "tooltip": true
+  },
+  "memory": {
+    "format": "[  {percentage}% ]"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "[  {temperatureC}°C ]"
   }
 }

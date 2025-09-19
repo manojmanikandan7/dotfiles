@@ -22,7 +22,6 @@ case $selected_option in
         systemctl suspend
         ;;
     "$lock")
-        # swaylock
         pidof hyprlock || hyprlock
         ;;
     "$logout")

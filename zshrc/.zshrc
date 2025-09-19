@@ -1,7 +1,7 @@
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# if [[ -f "/opt/homebrew/bin/brew" ]] then
+#   # If you're using macOS, you'll want this enabled
+#   eval "$(/opt/homebrew/bin/brew shellenv)"
+# fi
 
 eval "$(starship init zsh)"
 
@@ -57,37 +57,37 @@ setopt hist_find_no_dups
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias vim='nvim'
 alias c='clear'
+alias ls='ls -al --color=auto'
+alias grep='grep --color=auto'
 
 # Shell integrations
 eval "$(fzf --zsh)"
 
 export EDITOR='nvim'
 
+# # Add texlive to PATH
+# export PATH="/usr/local/texlive/2025basic/bin/universal-darwin:$PATH"
 
 
-# Add texlive to PATH
-export PATH="/usr/local/texlive/2025basic/bin/universal-darwin:$PATH"
-
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# # pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 
 # llvm
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # export CC="/opt/homebrew/opt/llvm/bin/clang"
 # export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 
 # Custom function for yazi
@@ -105,6 +105,7 @@ function y() {
 # export CPLUS_INCLUDE_PATH
 
 
-[ -f "/Users/manoj/.ghcup/env" ] && . "/Users/manoj/.ghcup/env" # ghcup-env
+# [ -f "/Users/manoj/.ghcup/env" ] && . "/Users/manoj/.ghcup/env" # ghcup-env
 
-neofetch
+alias bluefix='sudo modprobe -r btusb && sudo modprobe btusb'
+. "$HOME/.cargo/env"

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Options with icons (requires Font Awesome)
+# Options 
+suspend="Suspend"
 shutdown="Shutdown"
 reboot="Reboot"
-suspend=" Suspend"
 lock="Lock"
 logout="Logout"
 

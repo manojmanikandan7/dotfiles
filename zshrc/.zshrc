@@ -74,7 +74,7 @@ export EDITOR='nvim'
 
 # # Add texlive to PATH
 # export PATH="/usr/local/texlive/2025basic/bin/universal-darwin:$PATH"
-
+export PATH="$HOME/bin:$PATH"
 
 # # pyenv
 # export PYENV_ROOT="$HOME/.pyenv"

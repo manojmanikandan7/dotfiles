@@ -46,7 +46,7 @@ borderbox {
 
 contentbox {
   orientation: vertical;
-  children: [ "prompt", "entry", "listview" ];
+  children: [ "entry", "listview" ];
   spacing: 0px;
   padding: 5px;
   expand: true;
@@ -79,9 +79,9 @@ prompt {
 }
 
 entry {
-  padding: 5px;
+  padding: 10px;
   expand: false;
-  font: "JetBrainsMono NF Bold 14";
+  font: "JetBrainsMono NF Bold 15";
   text-color: #fab387;
   border-radius: 0px 3px 0px 0px;
   background-color: #292e36;  // input field

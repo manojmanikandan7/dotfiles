@@ -66,6 +66,7 @@ alias vim='nvim'
 alias c='clear'
 alias ls='ls -al --color=auto'
 alias grep='grep --color=auto'
+alias open='xdg-open'
 
 # Shell integrations
 eval "$(fzf --zsh)"

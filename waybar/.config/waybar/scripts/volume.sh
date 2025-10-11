@@ -6,11 +6,11 @@
 # ───────────────────────────────────────────────────────────
 
 # Get raw volume and convert to int
-vol_raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 }')
+vol_raw=$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 }')
 vol_int=$(echo "$vol_raw * 100" | bc | awk '{ print int($1) }')
 
 # Check mute status
-is_muted=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo true || echo false)
+is_muted=$(wpctl get-volume @DEFAULT_SINK@ | grep -q MUTED && echo true || echo false)
 
 # Get default sink description (human-readable)
 sink=$(wpctl status | awk '/Sinks:/,/Sources:/' | grep '\*' | cut -d'.' -f2- | sed 's/^\s*//; s/\[.*//')
@@ -50,4 +50,3 @@ fi
 
 # Final JSON output
 echo "{\"text\":\"<span foreground='$fg'>$icon $ascii_bar $vol_int%</span>\",\"tooltip\":\"$tooltip\"}"
-

@@ -1,8 +1,4 @@
 /* ── Rofi Theme ──────────────────────────────
-   °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh
-   shhheersh
-   Vers 1.0
-   Description: Custom styling for Rofi launcher 
    ─────────────────────────────────────────── */
 
 /* Global defaults */
@@ -16,16 +12,15 @@
 
 /* ── Window ──────────────────────────────── */
 window {
-  width: 750px;
+  width: 650px;
   height: 625px;
   location: center;
   blur: true;
   border: 2px;
-  border-radius: 3px;
-  border-color: #61afef;
+  border-radius: 7px;
+  border-color: #61afefa2;
   background-color: transparent;  // let Hyprland handle opacity
-  padding: 0px;
-  margin: 30px 50px;
+  padding: 1px;
 }
 
 /* ── Layout ──────────────────────────────── */
@@ -41,7 +36,7 @@ borderbox {
   children: [ "contentbox" ];
   padding: 0px;
   spacing: 0px;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 contentbox {
@@ -64,9 +59,9 @@ element-text, element-icon {
 }
 
 element selected {
-  background-color: #191919;
+  background-color: rgba(0, 0, 0, 0.6);
   text-color: #e5c07b;
-  border-radius: 3px;
+  border-radius: 1px;
 }
 
 /* ── Input & Prompt ──────────────────────── */
@@ -83,15 +78,14 @@ entry {
   expand: false;
   font: "JetBrainsMono NF Bold 15";
   text-color: #fab387;
-  border-radius: 0px 3px 0px 0px;
-  background-color: #292e36;  // input field
 }
 
 /* ── Listview ────────────────────────────── */
 listview {
   lines: 1;
-  background-color: rgba(46, 52, 64, 0.8); // solid background inside blur
-  border-radius: 0px 0px 3px 0px;
+  // background-color: rgba(27, 30, 37, 0.7); // solid background inside blur
+  background-color: transparent;
   padding: 5px;
+  border-radius: 6px;
 }
 

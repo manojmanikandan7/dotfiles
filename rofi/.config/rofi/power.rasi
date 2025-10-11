@@ -3,17 +3,17 @@ configuration {
 }
 
 * {
-    mainbox-spacing: 10px;
-    mainbox-margin: 30px;
+    mainbox-spacing: 2px;
+    mainbox-margin: 25px;
     message-margin: 0px 300px;
     message-padding: 10px;
-    listview-spacing: 25px;
-    element-padding: 10px 0px;
+    listview-spacing: 10px;
+    element-padding: 8px 0px;
     prompt-font: "JetBrains Mono Nerd Font 16";
-    entry-font: "JetBrains Mono Nerd Font 10";
+    entry-font: "JetBrains Mono Nerd Font 5";
     entry-margin: 0px 200px;
     element-text-font: "JetBrains Mono Nerd Font 13";
-    background-window: rgba(59, 66, 82, 0.8);
+    background-window: rgba(59, 66, 82, 0.2);
     background-normal: rgba(59, 66, 82, 1);
     background-selected: rgba(250, 179, 135, 1);
     foreground-normal: white;
@@ -23,13 +23,13 @@ configuration {
 
 window {
     transparency: "real";
-    location: center;
+    location: north;
     anchor: center;
     fullscreen: false;
-    width: 800px;
+    width: 700px;
     cursor: "default";
     background-color: @background-window;
-    blur: 15;
+    y-offset: 100;
 }
 
 mainbox {

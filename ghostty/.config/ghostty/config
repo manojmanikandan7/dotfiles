@@ -1,6 +1,7 @@
 theme = "Catppuccin Mocha"
 background-opacity = 0.80
 background-blur = 20
+mouse-hide-while-typing = true
 # background-blur-radius = 50
 # macos-titlebar-proxy-icon = hidden
 
@@ -13,7 +14,24 @@ font-size = 13
 
 cursor-click-to-move = true
 
+keybind = ctrl+i>n=new_window
 
-quick-terminal-position = right
-quick-terminal-autohide = true
-keybind = global:super+grave_accent=toggle_quick_terminal
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+keybind = ctrl+i>h=new_split:left
+keybind = ctrl+i>j=new_split:down
+keybind = ctrl+i>k=new_split:up
+keybind = ctrl+i>l=new_split:right
+keybind = ctrl+i>f=toggle_split_zoom
+keybind = ctrl+i>;=close_surface
+
+# keybind = ctrl+i>n=next_tab
+# keybind = ctrl+i>p=previous_tab
+
+keybind = super+r=reload_config
+
+window-save-state = always
+

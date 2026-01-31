@@ -41,34 +41,32 @@
   // ── Clock ────────────────────────────────────────────────────────
   "clock": {
     "format": "[ {:%I:%M %p} ]",
+    "format-alt": "[ {:%b %d} ]",
     "interval": 60,
     "tooltip-format": "<tt>{calendar}</tt>",
-    "on-click-right": "gnome-calendar",
     "calendar": {
+      "mode-mon-col"  : 3,
       "format": {
-        "today": "<span color='#fab387'><b>{}</b></span>"
+        "months":     "<span color='#ffead3'>{}</span>",
+        "days":       "<span color='#ecc6d9'>{}</span>",
+        "weeks":      "<span color='#99ffdd'>W{}</span>",
+        "weekdays":   "<span color='#ffcc66'>{}</span>",
+        "today":      "<span color='#fab387'><b>{}</b></span>"
       }
     },
     "actions": {
-      "on-scroll-up": "shift_down",
-      "on-scroll-down": "shift_up",
+      "on-click-right": "gnome-calendar",
+      "on-click": "mode",
     }
   },
-
-  // ── Network ──────────────────────────────────────────────────────
-  // "network": {
-  //   "format": "{ifname}",
-  //   "format-wifi": "({signalStrength}%)   ",
-  //   "format-ethernet": "{ifname}   ",
-  //   "format-disconnected": "   ",
-  //   "tooltip-format": "{ifname}",
-  //   "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-  //   "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-  //   "tooltip-format-disconnected": "Disconnected",
-  //   "on-click": "nm-connection-editor",
-  //   "interval": 5,
-  //   "max-length": 50
-  // },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "  ",
+      "deactivated": "  "
+    },
+    "timeout": 30.5
+  }, 
   "network": {
     "format-wifi": "[   ]",
     "format-ethernet": "[   ]",
@@ -125,7 +123,7 @@
     "tooltip": true,
     "tooltip-format": "Mic Toggle",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-right": "pavucontrol -t 4"
+    "on-click-right": "pwvucontrol -t 4"
   },
 
   // ── Brightness ───────────────────────────────────────────────────
@@ -150,14 +148,6 @@
     "max-length": 50
   },
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    },
-    "timeout": 30.5
-  },
 
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
@@ -195,7 +185,7 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "on-click-right": "pavucontrol -t 3"
+    "on-click-right": "pwvucontrol -t 3"
   },
 
   "tray": {
@@ -232,6 +222,7 @@
     },
     "modules": [
       "custom/expand",
+      "idle_inhibitor", 
       "cpu",
       "memory",
       "temperature"
@@ -248,5 +239,13 @@
     "thermal-zone": 2,
     "critical-threshold": 80,
     "format": "[  {temperatureC}°C ]"
+  }, 
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "   ",
+      "deactivated": "   "
+    },
+    "timeout": 30.5
   }
 }

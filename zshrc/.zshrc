@@ -40,6 +40,7 @@ bindkey 'jk' vi-cmd-mode
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
 bindkey '^[w' kill-region
+bindkey -v '^?' backward-delete-char
 
 # History
 HISTSIZE=5000
@@ -66,6 +67,7 @@ alias vim='nvim'
 alias c='clear'
 alias ls='ls -al --color=auto'
 alias grep='grep --color=auto'
+alias e='eza -al --icons=auto --hyperlink --git'
 alias open='xdg-open'
 
 # Shell integrations
@@ -78,9 +80,9 @@ export EDITOR='nvim'
 export PATH="$HOME/bin:$PATH"
 
 # # pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 
 # llvm
@@ -110,3 +112,5 @@ function y() {
 
 alias bluefix='sudo modprobe -r btusb && sudo modprobe btusb'
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

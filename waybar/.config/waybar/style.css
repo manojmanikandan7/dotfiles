@@ -60,6 +60,7 @@ window#waybar {
 #custom-battery,
 #custom-volume,
 #battery,
+#idle_inhibitor,
 #custom-brightness {
   padding: 1px 6px;
   margin: 2px 2px;
@@ -142,6 +143,7 @@ window#waybar {
 #memory:hover,
 #temperature:hover,
 #custom-battery:hover,
+#idle_inhibitor:hover,
 #custom-volume:hover,
 #custom-brightness:hover {
   border: 1px ridge #56b6c2;

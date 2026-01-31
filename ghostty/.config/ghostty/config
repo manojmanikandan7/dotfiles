@@ -16,17 +16,17 @@ cursor-click-to-move = true
 
 keybind = ctrl+i>n=new_window
 
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=goto_split:right
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = alt+l=goto_split:right
 
-keybind = ctrl+i>h=new_split:left
-keybind = ctrl+i>j=new_split:down
-keybind = ctrl+i>k=new_split:up
-keybind = ctrl+i>l=new_split:right
-keybind = ctrl+i>f=toggle_split_zoom
-keybind = ctrl+i>;=close_surface
+keybind = alt+i>h=new_split:left
+keybind = alt+i>j=new_split:down
+keybind = alt+i>k=new_split:up
+keybind = alt+i>l=new_split:right
+keybind = alt+i>f=toggle_split_zoom
+keybind = alt+i>;=close_surface
 
 # keybind = ctrl+i>n=next_tab
 # keybind = ctrl+i>p=previous_tab

@@ -103,6 +103,16 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+function dt() {
+  dict "$@" | \
+    sed 's/^  \(.\+\) \(\\.\+\\\)\(.*$\)/  \\e[1;32m\1\\e[21;39m \\e[33m\2\\\\e[39m\3/g' | \
+    sed 's/^ \{5,5\}\([0-9]\+\.\)\(.*\)$/     \\e[1;94m\1\\e[21;39m\2/g' | \
+    sed 's/\({[^{]\+}\)/\\e[1;95m\1\\e[21;39m/g' | \
+    xargs -0 echo -e | \
+    sed 's/\([[:blank:]]\[[^\[]\+\]\)/\\e[1;90m\1\\e[21;39m/g' | \
+    xargs -0 echo -e | \
+    less -R
+}
 # Includepath
 # CPLUS_INCLUDE_PATH="/opt/homebrew/opt/opencv/include/opencv4/:$CPLUS_INCLUDE_PATH" ## for Cpp compiler
 # export CPLUS_INCLUDE_PATH

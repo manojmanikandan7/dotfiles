@@ -43,21 +43,21 @@ else
   fg="#56b6c2" # cyan
 fi
 
-monitor_data=$(hyprctl -j monitors all)
+# monitor_data=$(hyprctl -j monitors all)
+#
+# refresh_rate=$(echo "$monitor_data" | jq -r '.[] | select(.name=="eDP-1") | .refreshRate')
+# disabled=$(echo "$monitor_data" | jq -r '.[] | select(.name=="eDP-1") | .disabled')
+#
+# refresh_rate_int=$(printf '%d' "$refresh_rate")
 
-refresh_rate=$(echo "$monitor_data" | jq -r '.[] | select(.name=="eDP-1") | .refreshRate')
-disabled=$(echo "$monitor_data" | jq -r '.[] | select(.name=="eDP-1") | .disabled')
-
-refresh_rate_int=$(printf '%d' "$refresh_rate")
-
-# Set monitor refresh rate based on battery status
-if [[ ("$disabled" == "true") ]]; then
-  break
-elif [[ ("$status" == "Charging" || ("$status" == "Not charging" && "$capacity" -ge 75)) && "$refresh_rate_int" -ne 165 ]]; then
-  hyprctl keyword monitor eDP-1,2560x1600@165,auto,1.25
-elif [[ "$status" == "Discharging" && "$refresh_rate_int" -ne 60 ]]; then
-  hyprctl keyword monitor eDP-1,2560x1600@60,auto,1.25
-fi
+# # Set monitor refresh rate based on battery status
+# if [[ ("$disabled" == "true") ]]; then
+#   break
+# elif [[ ("$status" == "Charging" || ("$status" == "Not charging" && "$capacity" -ge 75)) && "$refresh_rate_int" -ne 165 ]]; then
+#   hyprctl keyword monitor eDP-1,2560x1600@165,auto,1.25
+# elif [[ "$status" == "Discharging" && "$refresh_rate_int" -ne 60 ]]; then
+#   hyprctl keyword monitor eDP-1,2560x1600@60,auto,1.25
+# fi
 
 # Create tooltip with battery info
 if [[ "$status" == "Charging" && -n "$time_to_full" ]]; then

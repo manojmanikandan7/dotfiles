@@ -47,6 +47,7 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+setopt EXTENDED_GLOB
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -59,8 +60,7 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:*' fzf-preview 'eza --colour=auto $realpath'
 
 # Aliases
 alias vim='nvim'
@@ -69,6 +69,8 @@ alias ls='ls -al --color=auto'
 alias grep='grep --color=auto'
 alias e='eza -al --icons=auto --hyperlink --git'
 alias open='xdg-open'
+alias lg='lazygit'
+alias ldo='lazydocker'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -113,6 +115,9 @@ function dt() {
     xargs -0 echo -e | \
     less -R
 }
+export _ZO_FZF_OPTS="--preview='head -$LINES {}' --bind=down:preview-down --bind=up:preview-up"
+export FZF_DEFAULT_OPTS="--preview='head -$LINES {}' --bind=down:preview-down --bind=up:preview-up"
+eval "$(zoxide init zsh)"
 # Includepath
 # CPLUS_INCLUDE_PATH="/opt/homebrew/opt/opencv/include/opencv4/:$CPLUS_INCLUDE_PATH" ## for Cpp compiler
 # export CPLUS_INCLUDE_PATH
@@ -121,6 +126,20 @@ function dt() {
 # [ -f "/Users/manoj/.ghcup/env" ] && . "/Users/manoj/.ghcup/env" # ghcup-env
 
 alias bluefix='sudo modprobe -r btusb && sudo modprobe btusb'
-. "$HOME/.cargo/env"
 
 . "$HOME/.local/bin/env"
+
+# opencode
+export PATH=/home/manoj/.opencode/bin:$PATH
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+eval "$(pyenv virtualenv-init -)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/manoj/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/manoj/.local/bin:$PATH"

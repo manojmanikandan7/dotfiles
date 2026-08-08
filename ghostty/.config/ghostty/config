@@ -13,6 +13,7 @@ font-size = 13
 # window-width = 125
 
 cursor-click-to-move = true
+keybind = shift+enter=text:\x1b\r
 
 keybind = ctrl+i>n=new_window
 

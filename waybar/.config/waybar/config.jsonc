@@ -3,7 +3,6 @@
 //  Waybar config
 //  vers. 1.0.0
 // ──────────────────────────────────────────────────────────────────────────
-
 {
   "layer": "top",
   "position": "top",
@@ -12,23 +11,21 @@
   "width": 0,
   "height": 34,
   "reload_style_on_change": true,
-
   // ── Modules Layout ───────────────────────────────────────────────
   "modules-left": [
     "clock",
-    "network",
-    "bluetooth",
-    "custom/microphone",
+    // "network",
+    // "bluetooth",
+    // "custom/microphone",
     "tray",
+    "group/connectivity",
     "custom/leftchev",
     "hyprland/window",
     "custom/rightchev"
   ],
-
   "modules-center": [
     "hyprland/workspaces"
   ],
-
   "modules-right": [
     // "battery",
     "group/expand",
@@ -36,7 +33,6 @@
     "custom/volume",
     "custom/brightness"
   ],
-
   // ── Clock ────────────────────────────────────────────────────────
   "clock": {
     "format": "[ {:%I:%M %p} ]",
@@ -44,13 +40,13 @@
     "interval": 60,
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
-      "mode-mon-col"  : 3,
+      "mode-mon-col": 3,
       "format": {
-        "months":     "<span color='#ffead3'>{}</span>",
-        "days":       "<span color='#ecc6d9'>{}</span>",
-        "weeks":      "<span color='#99ffdd'>W{}</span>",
-        "weekdays":   "<span color='#ffcc66'>{}</span>",
-        "today":      "<span color='#fab387'><b>{}</b></span>"
+        "months": "<span color='#ffead3'>{}</span>",
+        "days": "<span color='#ecc6d9'>{}</span>",
+        "weeks": "<span color='#99ffdd'>W{}</span>",
+        "weekdays": "<span color='#ffcc66'>{}</span>",
+        "today": "<span color='#fab387'><b>{}</b></span>"
       }
     },
     "actions": {
@@ -65,7 +61,7 @@
       "deactivated": "  "
     },
     "timeout": 30.5
-  }, 
+  },
   "network": {
     "format-wifi": "[   ]",
     "format-ethernet": "[   ]",
@@ -92,19 +88,39 @@
     "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh",
     "on-click-right": "blueman-manager"
   },
-
   // ── Battery (scripted + built-in) ────────────────────────────────
   "custom/battery": {
     "exec": "~/.config/waybar/scripts/battery.sh",
     "return-type": "json",
     "interval": 10
   },
-
   "battery": {
     "format": "{icon} {capacity}%",
     "format-icons": {
-      "charging": ["󰢜 ", "󰂆 ", "󰂇 ", "󰂈 ", "󰢝 ", "󰂉 ", "󰢞 ", "󰂊 ", "󰂋 ", "󰂅 "],
-      "default": ["󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀 ", "󰂁 ", "󰂂 ", "󰁹 "]
+      "charging": [
+        "󰢜 ",
+        "󰂆 ",
+        "󰂇 ",
+        "󰂈 ",
+        "󰢝 ",
+        "󰂉 ",
+        "󰢞 ",
+        "󰂊 ",
+        "󰂋 ",
+        "󰂅 "
+      ],
+      "default": [
+        "󰁺 ",
+        "󰁻 ",
+        "󰁼 ",
+        "󰁽 ",
+        "󰁾 ",
+        "󰁿 ",
+        "󰂀 ",
+        "󰂁 ",
+        "󰂂 ",
+        "󰁹 "
+      ]
     },
     "format-full": "Charged ",
     "interval": 5,
@@ -114,7 +130,6 @@
     },
     "tooltip": true
   },
-
   // ── Microphone ───────────────────────────────────────────────────
   "custom/microphone": {
     "exec": "~/.config/waybar/scripts/mic.sh",
@@ -122,9 +137,8 @@
     "tooltip": true,
     "tooltip-format": "Mic Toggle",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-right": "pwvucontrol -t 3"
+    "on-click-right": "pavucontrol -t 4"
   },
-
   // ── Brightness ───────────────────────────────────────────────────
   "custom/brightness": {
     "exec": "~/.config/waybar/scripts/brightness.sh",
@@ -134,20 +148,23 @@
     "on-scroll-up": "brightnessctl set +5%",
     "on-scroll-down": "brightnessctl set 5%-"
   },
-
   "backlight": {
     "format": "󰛨  {percent}%",
-    "format-icons": ["󰃞 ", "󰃟 ", "󰃠 ", "󰃝 ", "󰃜 ", "󰃛 "],
+    "format-icons": [
+      "󰃞 ",
+      "󰃟 ",
+      "󰃠 ",
+      "󰃝 ",
+      "󰃜 ",
+      "󰃛 "
+    ],
     "class": "flicker-bar",
     "on-click": "~/.config/waybar/scripts/brightness-slider.sh"
   },
-
   "hyprland/window": {
     "separate-outputs": true,
     "max-length": 50
   },
-
-
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -175,7 +192,6 @@
     // "ignore-workspaces":
     "cursor": true
   },
-
   // ── Volume ───────────────────────────────────────────────────────
   "custom/volume": {
     "exec": "~/.config/waybar/scripts/volume.sh",
@@ -184,44 +200,57 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "on-click-right": "pwvucontrol -t 4"
+    "on-click-right": "pavucontrol -t 3"
   },
-
   "tray": {
     "icon-size": 20,
     "spacing": 10,
     "show-passive-items": true
   },
-
   // ── Spacer ───────────────────────────────────────────────────────
   "custom/squares": {
     "format": " 󰅴 ",
     "tooltip": false
   },
-
   "custom/leftchev": {
     "format": " 󰅁 ",
     "tooltip": false
   },
-
   "custom/rightchev": {
     "format": " 󰅂 ",
     "tooltip": false
   },
-
-  "custom/expand": {
+  "custom/expand-left": {
     "format": " ",
     "tooltip": false
+  },
+  "custom/expand-conn": {
+    "format": " 󰯉 ",
+    "tooltip": false
+  },
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 100,
+      "transition-to-left": false,
+      "click-to-reveal": false
+    },
+    "modules": [
+      "custom/expand-conn",
+      "network",
+      "bluetooth",
+      "custom/microphone"
+    ]
   },
   "group/expand": {
     "orientation": "horizontal",
     "drawer": {
-      "transition-duration": 600,
+      "transition-duration": 200,
       "transition-to-left": true,
-      "click-to-reveal": true
+      "click-to-reveal": false
     },
     "modules": [
-      "custom/expand",
+      "custom/expand-left",
       "cpu",
       "memory",
       "temperature"
@@ -238,5 +267,5 @@
     "thermal-zone": 2,
     "critical-threshold": 80,
     "format": "[  {temperatureC}°C ]"
-  }, 
+  }
 }

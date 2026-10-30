@@ -30,7 +30,7 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
-autoload -Uz compinit && compinit
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zinit cdreplay -q
 
@@ -132,7 +132,6 @@ alias bluefix='sudo modprobe -r btusb && sudo modprobe btusb'
 # opencode
 export PATH=/home/manoj/.opencode/bin:$PATH
 
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
 eval "$(pyenv virtualenv-init -)"
 
 # Added by LM Studio CLI (lms)

@@ -1,11 +1,11 @@
 theme = "Nightfox"
-background-opacity = 0.80
-background-blur = 20
+# background-opacity = 0.80
+# background-blur = 20
 mouse-hide-while-typing = true
 # background-blur-radius = 50
 # macos-titlebar-proxy-icon = hidden
 
-font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Space Nerd Font Mono"
 font-size = 13
 
 

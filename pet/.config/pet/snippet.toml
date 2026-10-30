@@ -1,0 +1,54 @@
+
+[[Snippets]]
+  Description = "search a particular package sty in tlmgr"
+  Output = ""
+  Tag = []
+  command = "tlmgr search --global --file \"/enumitem.sty\""
+
+[[Snippets]]
+  Description = "apfs cmd"
+  Output = ""
+  Tag = []
+  command = "sudo apfs-fuse -v 1 -o allow_other /dev/sda2 /mnt/tm"
+
+[[Snippets]]
+  Description = "terminal music player"
+  Output = ""
+  Tag = []
+  command = "kew"
+
+[[Snippets]]
+  Description = "Dry run backup to ssd"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk -n run"
+
+[[Snippets]]
+  Description = "Run backup to ssd"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk run"
+
+[[Snippets]]
+  Description = "remove any garbled partial backup"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk clean"
+
+[[Snippets]]
+  Description = "continue rather than restart"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk resume"
+
+[[Snippets]]
+  Description = "see what the retention policy will keep/prune"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk -S --print-schedule"
+
+[[Snippets]]
+  Description = "run back-up for one group (`home`/`root`) if ever want to back up just one subvolume without the other"
+  Output = ""
+  Tag = ["backup"]
+  command = "btrbk run <group>"

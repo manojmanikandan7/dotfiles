@@ -1,14 +1,14 @@
 :root {
-  --bg-primary: #2e3440de;
-  --bg-secondary: #262626de;
-  --bg-button: #4E4E4E;
-  --bg-button-hover: #5E5E5E;
-  --text-primary: #9CDEF2;
-  --text-disabled: #5C554A;
-  --border-color: #61afef;
-  --priority-low: #EBDBB2;
-  --priority-normal: #83A598;
-  --priority-critical: #FB4934;
+  --bg-primary: #2a2a2ade;
+  --bg-secondary: #222222de;
+  --bg-button: #4a4a4a;
+  --bg-button-hover: #5a5a5a;
+  --text-primary: #e0e0e0;
+  --text-disabled: #8a8a8a;
+  --border-color: #555555;
+  --priority-low: #b0b0b0;
+  --priority-normal: #a0a0a0;
+  --priority-critical: #7a7a7a;
   --transition-standard: 0.15s ease-in-out;
 }
 
@@ -174,7 +174,7 @@ scrollbar slider {
 
 .notification-content .body-image {
   margin-top: 4px;
-  background-color: white;
+  background-color: #e0e0e0;
   -gtk-icon-filter: none;
 }
 
@@ -193,7 +193,7 @@ scrollbar slider {
 
 .notification-content .inline-reply .inline-reply-button {
   margin-left: 4px;
-  background: rgb(48, 48, 48);
+  background: var(--bg-button);
   border: 1px solid var(--border-color);
   border-radius: 2px;
   color: var(--text-primary);
@@ -201,7 +201,7 @@ scrollbar slider {
 
 .notification-content .inline-reply .inline-reply-button:disabled {
   background: initial;
-  color: rgb(150, 150, 150);
+  color: var(--text-disabled);
   border: 1px solid var(--border-color);
   border-color: transparent;
 }

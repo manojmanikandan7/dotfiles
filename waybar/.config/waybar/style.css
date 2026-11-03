@@ -1,7 +1,3 @@
-/* ──────────────────────────────────────────────────────────────────────────
-   Waybar CSS styling
-   ────────────────────────────────────────────────────────────────────────── */
-
 /* === Base Waybar Styling ================================================= */
 
 waybar * {
@@ -15,7 +11,7 @@ waybar * {
 window#waybar {
   /* background-color: rgba(59, 66, 82, 0.9); */
   background: transparent;
-  color: #9cdef2;
+  color: #e0e0e0;
 }
 
 
@@ -33,17 +29,17 @@ window#waybar {
   padding: 4px 4px;
   margin: 6px 3px;
   border-radius: 2px;
-  background-color: #2e3440;
-  color: #56b6c2;
+  background-color: #2a2a2a;
+  color: #b0b0b0;
 }
 
 #workspaces button.active {
-  color: #fab387;
+  color: #d0d0d0;
 }
 
 #workspaces button:hover {
-  color: #2e3440;
-  background-color: #56b6c2;
+  color: #2a2a2a;
+  background-color: #b0b0b0;
 }
 
 
@@ -64,8 +60,8 @@ window#waybar {
 #custom-brightness {
   padding: 1px 6px;
   margin: 2px 2px;
-  background-color: #292d35;
-  border: 1px solid #61afef;
+  background-color: #252525;
+  border: 1px solid #555555;
   border-radius: 1px;
 }
 
@@ -86,14 +82,14 @@ window#waybar {
 #custom-leftchev,
 #custom-rightchev,
 #clock {
-  color: #fab387;
+  color: #a0a0a0;
 }
 
 /* === Network ============================================================= */
 
 #network.disconnected {
-  background-color: #e06c75;
-  color: #1e1e2e;
+  background-color: #5a5a5a;
+  color: #e0e0e0;
 }
 
 
@@ -113,20 +109,20 @@ window#waybar {
 
 /* 🔴 Critical */
 #custom-battery .battery-critical {
-  background-color: #bf616a;
-  color: white;
+  background-color: #7a7a7a;
+  color: #e0e0e0;
   font-weight: bold;
 }
 
 /* 🟠 Warning */
 #custom-battery .battery-warning {
-  background-color: #fab387;
-  color: #2e3440;
+  background-color: #8a8a8a;
+  color: #2a2a2a;
 }
 
 /* 🟢 Normal */
 #custom-battery .battery-normal {
-  color: #ffffff;
+  color: #e0e0e0;
 }
 
 
@@ -146,21 +142,21 @@ window#waybar {
 #idle_inhibitor:hover,
 #custom-volume:hover,
 #custom-brightness:hover {
-  border: 1px ridge #56b6c2;
-  color: #56b6c2;
+  border: 1px ridge #7a7a7a;
+  color: #7a7a7a;
 }
 
 
 /* === Tooltips ============================================================ */
 
 tooltip {
-  color: #56b6c2;
-  background-color: #3b4252;
-  border: 1px solid #56b6c2;
+  color: #b0b0b0;
+  background-color: #2a2a2a;
+  border: 1px solid #7a7a7a;
   font-weight: bold;
 }
 
 tooltip label {
-  color: #78bec7;
+  color: #909090;
 }
 

@@ -86,7 +86,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("brave", { workspace = "4 silent" })
 	hl.exec_cmd("sh /home/manoj/.local/bin/monitor-watch.sh")
 	hl.exec_cmd("kbuildsycoca6")
-	hl.exec_cmd("hyprctl dispatch workspace 1")
+	hl.dsp.focus({ workspace = "r+1", on_current_monitor = true })
 end)
 
 hl.on("config.reloaded", function()
@@ -162,7 +162,7 @@ hl.config({
 
 	decoration = {
 		rounding = 0,
-		rounding_power = 0,
+		rounding_power = 1.0,
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,

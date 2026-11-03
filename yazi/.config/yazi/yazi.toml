@@ -1,0 +1,15 @@
+# Linux: Hyprland + awww
+[[opener.set-wallpaper]]
+run  = "awww img %s1"
+for  = "linux"
+desc = "Set as wallpaper"
+
+# yazi.toml
+[[open.prepend_rules]]
+mime = "image/*"
+use  = [ "set-wallpaper", "open" ]
+
+[preview]
+# Change them to your desired values
+max_width  = 1000
+max_height = 1000
